@@ -17,9 +17,11 @@ module.exports = function (app) {
     }
 
     return function (opts) {
-        var origView = opts.view || noop
-        opts.view = function (state, actions) {
-            return origView(state, actions, getWiredViews(state, actions, opts))
+        var origView = opts.view
+        if (origView) {
+            opts.view = function (state, actions) {
+                return origView(state, actions, getWiredViews(state, actions, opts))
+            }
         }
         return app(opts)
     }
