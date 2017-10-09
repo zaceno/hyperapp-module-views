@@ -103,7 +103,7 @@ App as above renders:
 
 Module views are called with state & action as first and second parameters just like the main app view. So you don't have to pass those as props to the components.
 
-State and actions are scoped passed to a module view, are scoped according to the module.
+State and actions passed to a module view, are scoped according to the module.
 
 ```jsx
 
