@@ -1,6 +1,6 @@
 {
   "name": "hyperapp-module-views",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Allow hyperapp modules to provide components bound to their state and actions",
   "main": "src/index.js",
   "scripts": {
