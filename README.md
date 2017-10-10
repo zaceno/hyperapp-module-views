@@ -18,7 +18,7 @@ Then import/require `moduleViews` in your project, and use it to decorate your a
 const {h, app} = require('hyperapp')
 const moduleViews = require('hyperapp-module-views')
 
-app(moduleViews)({
+moduleViews(app)({
   ...
 })
 
@@ -37,7 +37,7 @@ Add the following script tag to the `<head>...</head>` section of your html page
 
 
 ```js
-app(moduleViews)({
+moduleViews(app)({
   ...
 })
 ```
