@@ -16,13 +16,13 @@ module.exports = function (app) {
         return views
     }
 
-    return function (opts) {
+    return function (opts, container) {
         var origView = opts.view
         if (origView) {
             opts.view = function (state, actions) {
                 return origView(state, actions, getWiredViews(state, actions, opts))
             }
         }
-        return app(opts)
+        return app(opts, container)
     }
 }

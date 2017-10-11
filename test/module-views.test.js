@@ -51,7 +51,6 @@ test.cb('module view tree given to main view, contains all sub views', t => {
         modules: {bar}
     }
     app({
-        root: t.context.container,
         modules: {foo},
         view: (state, actions, views) => h('div', {}, [
             views.foo.v1(),
@@ -59,7 +58,7 @@ test.cb('module view tree given to main view, contains all sub views', t => {
             views.foo.bar.v1(),
             views.foo.bar.v2()
         ]),
-    })
+    }, t.context.container)
     setTimeout(_ => {
         isHTML(t, '<div><p>foo-1</p><p>foo-2</p><p>bar-1</p><p>bar-2</p></div>')
         t.end()
@@ -83,10 +82,9 @@ test.cb('view tree passed to a module view contains sibling and child views', t 
         modules: {bar}
     }
     app({
-        root: t.context.container,
         modules: {foo},
         view: (state, actions, views) => views.foo.v1()
-    })
+    }, t.context.container)
     setTimeout(_ => {
         isHTML(t, '<div><p>foo</p><p>bar</p></div>')
         t.end()
@@ -110,11 +108,10 @@ test.cb('module view called with scoped state and actions', t => {
         }
     }
     const actions = app({
-        root: t.context.container,
         modules: {foo},
         init: (state, actions) => actions.foo.change(),
         view: (state, actions, views) => views.foo.test()
-    })
+    }, t.context.container)
     setTimeout(_ => {
         isHTML(t, '<div>changed</div>')
         t.end()
@@ -123,7 +120,6 @@ test.cb('module view called with scoped state and actions', t => {
 
 test.cb('module view takes props and children', t => {
     app({
-        root: t.context.container,
         modules: {
             foo: {
                 views: {
@@ -132,7 +128,7 @@ test.cb('module view takes props and children', t => {
             }
         },
         view: (state, actions, views) => views.foo.test({id: 'foo'}, ['bar'])
-    })
+    }, t.context.container)
     setTimeout(_ => {
         isHTML(t, '<div id="foo">bar</div>')
         t.end()
