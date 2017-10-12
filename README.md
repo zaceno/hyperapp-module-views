@@ -29,7 +29,7 @@ moduleViews(app)({
 Add the following script tag to the `<head>...</head>` section of your html page:
 
 ```html
-<script src="https://unpkg.com/hyperapp-module-views@latest/dist/hyperapp-module-views.umd.js"></script>
+<script src="https://unpkg.com/hyperapp-module-views"></script>
 
 ```
 
