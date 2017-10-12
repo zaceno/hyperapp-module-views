@@ -2,10 +2,13 @@
   "name": "hyperapp-module-views",
   "version": "0.0.3",
   "description": "Allow hyperapp modules to provide components bound to their state and actions",
-  "main": "src/index.js",
+  "main": "dist/hyperapp-module-views.js",
+  "module": "src/index.js",
   "scripts": {
-    "test": "ava test/*.test.js",
-    "build": "browserify src/index.js  --standalone moduleViews | uglifyjs --mangle --compress > dist/hyperapp-module-views.umd.js"
+    "build:umd": "rollup -i src/index.js -m -f umd -n moduleViews -o dist/hyperapp-module-views.js",
+    "build:minify": "uglifyjs dist/hyperapp-module-views.js -o dist/hyperapp-module-views.js --mangle --compress --source-map filename=dist/hyperapp-module-views.js.map",
+    "build": "npm run build:umd && npm run build:minify",
+    "test": "npm run build && ava test/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -19,9 +22,9 @@
   "homepage": "https://github.com/zaceno/hyperapp-module-views#readme",
   "devDependencies": {
     "ava": "^0.22.0",
-    "browserify": "^14.4.0",
     "hyperapp": "^0.15.0",
     "jsdom": "^11.3.0",
+    "rollup": "^0.50.0",
     "uglify-js": "^3.0.28"
   }
 }

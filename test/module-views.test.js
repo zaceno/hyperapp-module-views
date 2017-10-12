@@ -1,16 +1,17 @@
 //require('undom/register')
 const test = require('ava')
 
+//fake browser environment
 const {JSDOM} = require('jsdom')
 const dom = new JSDOM(`<!doctype html><html><body></body></html>`)
 global.window = dom.window
 global.document = dom.window.document
-//Fake requestAnimationFrame
 global.requestAnimationFrame = fn => setTimeout(fn, 0);
-const withModuleViews = require('../src/index.js')
+
+
+const withModuleViews = require('../dist/hyperapp-module-views.js')
 const {h, app: plainApp} = require('hyperapp')
 const app = withModuleViews(plainApp)
-//const modules = require('../src/modules')
 
 
 //Condense prettified html to match what serializes from Element

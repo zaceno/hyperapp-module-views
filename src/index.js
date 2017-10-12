@@ -1,4 +1,4 @@
-module.exports = function (app) {
+export default function (app) {
     function wireView (state, actions, boundViews, fn) {
         return function (props, children) {
             return fn(state, actions, boundViews, props, children)
