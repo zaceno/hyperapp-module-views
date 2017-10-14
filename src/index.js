@@ -10,7 +10,7 @@ export default function (app) {
         for (var scope in opts.modules || {}) {
             views[scope] = getWiredViews(state[scope], actions[scope], opts.modules[scope])
         }
-        for (var name in opts.views || {}) {
+        for (var name in opts.views || {}) {
             views[name] = wireView(state, actions, views, opts.views[name])
         }
         return views
